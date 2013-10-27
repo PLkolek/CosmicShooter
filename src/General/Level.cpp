@@ -173,7 +173,7 @@ void Level::update(sf::Time deltaTime)
 		for (const std::unique_ptr<ComponentsEnum>& component : ComponentsEnum::getValues())
 		{
 			counter++;
-			components.erase(CompKey(EID, component.getName()));
+			components.erase(CompKey(EID, component->getName()));
 		}
 		t1 += preciseTimer.restart().asMicroseconds();
 

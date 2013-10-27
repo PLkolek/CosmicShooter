@@ -8,19 +8,15 @@
 #ifndef FILENOTFOUNDEXCEPTION_HPP
 #define	FILENOTFOUNDEXCEPTION_HPP
 
-#include <exception>
+#include <stdexcept>
 #include <string>
 
-class FileNotFound: public std::exception
+class FileNotFound: public std::runtime_error
 {
 	std::string name;
 public:
-	const char* what()
-	{
-		return ("File not found: " + name).c_str();
-	}
 	FileNotFound(std::string name) :
-			name(name)
+			runtime_error("File not found: " + name)
 	{
 	}
 };

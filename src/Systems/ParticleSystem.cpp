@@ -91,8 +91,8 @@ void ParticleSystem::update(sf::Time deltaTime)
 			PositionComponent& partPosComp = *boost::polymorphic_downcast<
 					PositionComponent*>(
 					components.at(Level::CompKey(newID, "Position")));
-			partPosComp.x = posC.x;
-			partPosComp.y = posC.y;
+			partPosComp.pos.x = posC.pos.x;
+			partPosComp.pos.y = posC.pos.y;
 			if (components.find(Level::CompKey(*it, "PositionRelativeTo"))
 					!= components.end())
 			{
@@ -106,8 +106,8 @@ void ParticleSystem::update(sf::Time deltaTime)
 						PositionComponent*>(
 						components.at(
 								Level::CompKey(prtC.relativeTo, "Position")));
-				partPosComp.x += ppC.x;
-				partPosComp.y += ppC.y;
+				partPosComp.pos.x += ppC.pos.x;
+				partPosComp.pos.y += ppC.pos.y;
 			}
 
 			if (components.find(Level::CompKey(newID, "Countdown"))

@@ -14,7 +14,7 @@
 
 struct PhysicsComponent: public Component
 {
-	PhysicsComponent(int EID, double mass, double acceleration, double maxSpeed,
+	PhysicsComponent(int EID, float mass, double acceleration, double maxSpeed,
 			double stoppingSpeed);
 	PhysicsComponent(rapidxml::xml_node<>* componentNode);
 
@@ -24,7 +24,7 @@ struct PhysicsComponent: public Component
 	Vector v;
 	Vector a;
 	Vector f;
-	double m;
+	float m;
 	double angularV;
 
 	Vector prevV;

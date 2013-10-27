@@ -14,8 +14,7 @@
 #include "Components/StandableComponent.hpp"
 #include "States/StateEngine.hpp"
 
-PlayerInputSystem::PlayerInputSystem(Level::CompMap& components,
-		sf::RenderWindow& app) :
+PlayerInputSystem::PlayerInputSystem(Level::CompMap& components, sf::RenderWindow& app) :
 		System(components), app(app)
 {
 }
@@ -47,63 +46,22 @@ void PlayerInputSystem::update(sf::Time deltaTime)
 	}
 	for (auto eid : entities)
 	{
-		PhysicsComponent& pC = *boost::polymorphic_downcast<PhysicsComponent*>(
-				components.at(Level::CompKey(eid, "Physics")));
-		StandsOnComponent soEmpty(-1);
-		StandsOnComponent& soC =
-				components.find(Level::CompKey(eid, "StandsOn"))
-						!= components.end() ?
-						*boost::polymorphic_downcast<StandsOnComponent*>(
-								components.at(
-										Level::CompKey(eid, "StandsOn"))) :
-						soEmpty;
+		PhysicsComponent& pC = *boost::polymorphic_downcast<PhysicsComponent*>(components.at(Level::CompKey(eid, "Physics")));
 
-		StandableComponent sEmpty(-1);
-		StandableComponent sC =
-				components.find(Level::CompKey(soC.standsOn, "Standable"))
-						!= components.end() ?
-						*boost::polymorphic_downcast<StandableComponent*>(
-								components.at(
-										Level::CompKey(soC.standsOn,
-												"Standable"))) :
-						sEmpty;
-
+		Vector thrust;
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-		{
-			pC.a.x = -pC.acceleration * sC.accelerationMultiplier;
-		}
+			thrust.x = -1;
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-		{
-			pC.a.x = pC.acceleration * sC.accelerationMultiplier;
-		}
-		else
-		{
-			if (soC.standing)
-			{
-				double sign;
-				if (pC.v.x > 0)
-					sign = -1;
-				else if (pC.v.x < 0)
-					sign = 1;
-				else
-					sign = 0; //direction of decceleration
-				pC.a.x = sign * pC.stoppingSpeed * sC.stoppingMultiplier;
-			}
-		}
+			thrust.x = 1;
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)
-				&& soC.jumpingTimeLeft > 0)
-		{
-			pC.a.x = 0;
-			pC.v.y = -soC.baseJumpingPower * sC.jumpingAccelerationMultiplier;
-			soC.jumpingTimeLeft -= deltaTime.asSeconds();
-		}
-		else
-		{
-			soC.jumpingTimeLeft = 0;
-		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+			thrust.y = -1;
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+			thrust.y = 1;
 
+		if(thrust!=Vector())
+			thrust.scaleToLength(50000);
+		pC.f += thrust;
 	}
-	std::cerr << "Player input system: "
-			<< timer.getElapsedTime().asMilliseconds() << "\n";
+	std::cerr << "Player input system: " << timer.getElapsedTime().asMilliseconds() << "\n";
 }

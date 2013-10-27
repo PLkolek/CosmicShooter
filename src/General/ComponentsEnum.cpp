@@ -39,6 +39,11 @@ ComponentsEnum::ConstEnumsVector ComponentsEnum::getValues()
 	return enums;
 }
 
+std::string ComponentsEnum::getName()
+{
+	return name;
+}
+
 ComponentsEnum::EnumsVector ComponentsEnum::initEnums()
 {
 	ComponentsEnum::EnumsVector result;

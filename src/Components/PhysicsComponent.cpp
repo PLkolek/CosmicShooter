@@ -11,7 +11,7 @@
 #include <boost/lexical_cast.hpp>
 
 
-PhysicsComponent::PhysicsComponent(int EID, double mass, double acceleration, double maxSpeed, double stoppingSpeed) :
+PhysicsComponent::PhysicsComponent(int EID, float mass, double acceleration, double maxSpeed, double stoppingSpeed) :
 		Component(EID), v(), a(), f(), m(mass), angularV(0), prevV(), prevA(), prevF(), prevM(), prevAngularV(),
 		 acceleration(acceleration), maxSpeed(maxSpeed), stoppingSpeed(stoppingSpeed)
 {

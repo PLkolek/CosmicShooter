@@ -7,18 +7,19 @@
 
 #ifndef VECTOR_H_
 #define VECTOR_H_
+#include <SFML/System/Vector2.hpp>
 
-struct Vector
+struct Vector : sf::Vector2f
 {
 	Vector();
-	Vector(double x, double y);
+	Vector(const sf::Vector2f& vector);
+	Vector(float x, float y);
 	Vector(const Vector& vector);
 	virtual ~Vector();
 
-	double x, y;
-	Vector operator+(const Vector& right) const;
-	Vector operator*(const double& a) const;
-	Vector& operator+=(const Vector& right);
+	Vector& scaleToLength(float targetLength);
+	float length() const;
+	Vector direction() const;
 
 };
 

@@ -40,54 +40,44 @@ void MovementSystem::addEntity(int EID)
 void MovementSystem::update(sf::Time time)
 {
 	sf::Clock timer;
-	double deltaT = time.asSeconds();
+	float deltaT = time.asSeconds();
 	for (auto it = entities.begin(); it != entities.end(); it++)
 	{
 		PositionComponent& posC = *boost::polymorphic_downcast<PositionComponent*>(components.at(Level::CompKey(*it, "Position")));
 		PhysicsComponent& physC = *boost::polymorphic_downcast<PhysicsComponent*>(components.at(Level::CompKey(*it, "Physics")));
 
-		StandsOnComponent empty(*it);
-		StandsOnComponent& standsOnC = (
-				components.find(Level::CompKey(*it, "StandsOn")) != components.end() ?
-						*boost::polymorphic_downcast<StandsOnComponent*>(components.at(Level::CompKey(*it, "StandsOn"))) : empty);
+		physC.a += physC.f/physC.m;
 
-		//StandsOnComponent& standsOnC = *boost::polymorphic_downcast<StandsOnComponent*>(components.at(Level::CompKey(*it, "StandsOn")));
-
-		StandableComponent groundC(-1, 0, 1000, 0, 0, 0);
-		if (standsOnC.standing)
-		{
-			StandableComponent empty(-1);
-			groundC = (
-					components.find(Level::CompKey(standsOnC.standsOn, "Standable")) != components.end() ?
-							*boost::polymorphic_downcast<StandableComponent*>(
-									components.at(Level::CompKey(standsOnC.standsOn, "Standable"))) :
-							empty);
-		}
-		else
-			groundC = StandableComponent(-1);
-
-		double oldVx = physC.v.x;
+		Vector oldV = physC.v;
 		physC.v += physC.a * deltaT;
 
-		if (oldVx * physC.v.x < 0)
+		if (oldV.direction() == physC.v.direction()*-1.f)
 		{
-			physC.v.x = 0;
+			physC.v = Vector();
 		}
 
-		if (physC.v.x > physC.maxSpeed * groundC.maxSpeedMultiplier)
+		/*if (physC.v.x > physC.maxSpeed * groundC.maxSpeedMultiplier)
 		{
 			physC.v.x = physC.maxSpeed * groundC.maxSpeedMultiplier;
 		}
 		if (physC.v.x < -physC.maxSpeed * groundC.maxSpeedMultiplier)
 		{
 			physC.v.x = -physC.maxSpeed * groundC.maxSpeedMultiplier;
-		}
+		}*/
 
-		posC.x += deltaT * physC.v.x;
-		posC.y += deltaT * physC.v.y;
+		posC.pos += deltaT * physC.v;
 
 		posC.angle += deltaT * physC.angularV;
 		posC.angle -= (360.0 * int(posC.angle / 360.0));
+
+		physC.prevA=physC.a;
+		physC.prevF=physC.f;
+		physC.prevM=physC.m;
+		physC.prevV=physC.v;
+		physC.prevAngularV=physC.angularV;
+
+		physC.a=Vector();
+		physC.f=Vector();
 	}
 	std::cerr << "Movement system: " << timer.getElapsedTime().asMilliseconds() << "\n";
 }

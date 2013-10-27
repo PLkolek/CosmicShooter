@@ -21,12 +21,14 @@ class Component;
 class ComponentsEnum
 {
 public:
-	typedef const std::vector<const std::unique_ptr<ComponentsEnum>>&  ConstEnumsVector;
-	virtual ~ComponentsEnum();
+	typedef const std::vector<std::unique_ptr<ComponentsEnum>>&  ConstEnumsVector;
 	static int nextId;
 	static ConstEnumsVector getValues();
 	static ComponentsEnum& getByName(std::string name);
+
 	virtual Component* createComponent(rapidxml::xml_node<>* archetypeNode)=0;
+	virtual std::string getName();
+	virtual ~ComponentsEnum();
 
 	class BoundingBox;
 	class CameraSource;
@@ -45,9 +47,8 @@ public:
 	class StandsOn;
 	class Text;
 	class Viewport;
-protected:
-	ComponentsEnum(std::string name);
 private:
+	ComponentsEnum(std::string name);
 	typedef std::vector<std::unique_ptr<ComponentsEnum>>  EnumsVector;
 	typedef std::map<std::string, ComponentsEnum&>  NameEnumMap;
 	static NameEnumMap nameToEnum;

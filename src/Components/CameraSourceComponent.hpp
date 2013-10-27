@@ -13,14 +13,13 @@
 
 struct CameraSourceComponent: public Component
 {
-	CameraSourceComponent(float offsetX, float offsetY, float offsetZ,
-			float sourceWidth, float sourceHeight, int EID);
+	CameraSourceComponent(float offsetX, float offsetY, float sourceWidth, float sourceHeight, int EID);
 	CameraSourceComponent(rapidxml::xml_node<>* componentNode);
 
 	Component* clone(int newEID);
 	void read(rapidxml::xml_node<>* componentNode);
 
-	float offsetX, offsetY, offsetZ;
+	float offsetX, offsetY;
 	float sourceHeight, sourceWidth;
 };
 

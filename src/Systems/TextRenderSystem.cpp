@@ -39,7 +39,7 @@ void TextRenderSystem::update(sf::Time deltaTime)
 
 		sf::View view = window.getView();
 		window.setView(sf::View());
-		tC->text.setPosition(pC->x, pC->y);
+		tC->text.setPosition(pC->pos);
 		window.draw(tC->text);
 		window.setView(view);
 	}

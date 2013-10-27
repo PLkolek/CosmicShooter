@@ -98,10 +98,10 @@ void CollisionSystem::update(sf::Time deltaTime)
 			sf::Rect<double> bbi = bbCi.boundingBox;
 			sf::Rect<double> bbj = bbCj.boundingBox;
 
-			bbi.left += posCi.x;
-			bbi.top += posCi.y;
-			bbj.left += posCj.x;
-			bbj.top += posCj.y;
+			bbi.left += posCi.pos.x;
+			bbi.top += posCi.pos.y;
+			bbj.left += posCj.pos.x;
+			bbj.top += posCj.pos.y;
 
 			if (bbi.intersects(bbj))
 			{
@@ -131,7 +131,7 @@ void CollisionSystem::update(sf::Time deltaTime)
 
 				if (tx <= deltaTime.asSeconds() + eps)
 				{
-					if (posCi.x - (tx * physCi.v.x) <= posCj.x - (t * physCj.v.x))
+					if (posCi.pos.x - (tx * physCi.v.x) <= posCj.pos.x - (t * physCj.v.x))
 					{
 						colDatai.right = true;
 						colDataj.left = true;
@@ -144,7 +144,7 @@ void CollisionSystem::update(sf::Time deltaTime)
 				}
 				if (ty <= deltaTime.asSeconds() + eps)
 				{
-					if (posCi.y - (ty * physCi.v.y) <= posCj.y - (t * physCj.v.y))
+					if (posCi.pos.y - (ty * physCi.v.y) <= posCj.pos.y - (t * physCj.v.y))
 					{
 						colDatai.bottom = true;
 						colDataj.top = true;
@@ -177,8 +177,8 @@ void CollisionSystem::update(sf::Time deltaTime)
 								|| (bbCj.leftSolid && bbCi.rightSolid
 										&& colDataj.left && colDatai.right))
 						{
-							posCi.x -= (t * physCi.v.x);
-							posCj.x -= (t * physCj.v.x);
+							posCi.pos.x -= (t * physCi.v.x);
+							posCj.pos.x -= (t * physCj.v.x);
 							resetX.push_back(*it);
 							resetX.push_back(*jt);
 							/*	physCi.vx=0;
@@ -193,8 +193,8 @@ void CollisionSystem::update(sf::Time deltaTime)
 						{
 							resetY.push_back(*it);
 							resetY.push_back(*jt);
-							posCi.y -= (ty * physCi.v.y);
-							posCj.y -= (ty * physCj.v.y);
+							posCi.pos.y -= (ty * physCi.v.y);
+							posCj.pos.y -= (ty * physCj.v.y);
 							/*	physCi.ay=0;
 							 physCi.vy=0;
 							 physCj.vy=0;
@@ -210,8 +210,8 @@ void CollisionSystem::update(sf::Time deltaTime)
 						{
 							resetY.push_back(*it);
 							resetY.push_back(*jt);
-							posCi.y -= (ty * physCi.v.y);
-							posCj.y -= (ty * physCj.v.y);
+							posCi.pos.y -= (ty * physCi.v.y);
+							posCj.pos.y -= (ty * physCj.v.y);
 							/*	physCi.ay=0;
 							 physCi.vy=0;
 							 physCj.vy=0;
@@ -224,8 +224,8 @@ void CollisionSystem::update(sf::Time deltaTime)
 						{
 							resetX.push_back(*it);
 							resetX.push_back(*jt);
-							posCi.x -= (tx * physCi.v.x);
-							posCj.x -= (tx * physCj.v.x);
+							posCi.pos.x -= (tx * physCi.v.x);
+							posCj.pos.x -= (tx * physCj.v.x);
 							/*physCi.vx=0;
 							 physCi.ax=0;
 							 physCj.ax=0;

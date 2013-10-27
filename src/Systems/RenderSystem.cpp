@@ -44,8 +44,8 @@ void RenderSystem::update(sf::Time deltaTime)
 					components.at(Level::CompKey(EID, "Position")));
 			SpriteComponent* sC = boost::polymorphic_downcast<SpriteComponent*>(
 					components.at(Level::CompKey(EID, "Sprite")));
-			int x = pC->x;
-			int y = pC->y;
+			int x = pC->pos.x;
+			int y = pC->pos.y;
 			if (components.find(Level::CompKey(EID, "PositionRelativeTo"))
 					!= components.end())
 			{
@@ -59,8 +59,8 @@ void RenderSystem::update(sf::Time deltaTime)
 						PositionComponent*>(
 						components.at(
 								Level::CompKey(prtC.relativeTo, "Position")));
-				x += ppC.x;
-				y += ppC.y;
+				x += ppC.pos.x;
+				y += ppC.pos.y;
 			}
 			int orX = sC->sprite.getLocalBounds().width / 2.0;
 			int orY = sC->sprite.getLocalBounds().height / 2.0;

@@ -82,10 +82,10 @@ void StandsOnSystem::update(sf::Time deltaTime)
 			sf::Rect<double> bbi = bbCi.boundingBox;
 			sf::Rect<double> bbj = bbCj.boundingBox;
 
-			bbi.left += posCi.x;
-			bbi.top += posCi.y + 1;
-			bbj.left += posCj.x;
-			bbj.top += posCj.y;
+			bbi.left += posCi.pos.x;
+			bbi.top += posCi.pos.y + 1;
+			bbj.left += posCj.pos.x;
+			bbj.top += posCj.pos.y;
 
 			if (bbi.intersects(bbj) && bbCj.topSolid)
 			{

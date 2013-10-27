@@ -7,19 +7,26 @@
 
 #include "Other/Vector.h"
 
+#include <cmath>
+
 
 Vector::Vector()
-:x(0), y(0)
+:sf::Vector2f(0,0)
 {
 }
 
-Vector::Vector(double x, double y)
-:x(x), y(y)
+Vector::Vector(float x, float y)
+:sf::Vector2f(x,y)
 {
 }
 
 Vector::Vector(const Vector& v)
-:x(v.x), y(v.y)
+:sf::Vector2f(v)
+{
+}
+
+Vector::Vector(const sf::Vector2f& v)
+:sf::Vector2f(v)
 {
 }
 
@@ -27,19 +34,20 @@ Vector::~Vector()
 {
 }
 
-Vector Vector::operator+(const Vector& v) const
+Vector& Vector::scaleToLength(float targetLength)
 {
-	return Vector(this->x+v.y, this->y+v.y);
-}
-
-Vector Vector::operator*(const double& v) const
-{
-	return Vector(this->x*v, this->y*v);
-}
-
-Vector& Vector::operator+=(const Vector& v)
-{
-	this->x+=v.x;
-	this->y+=v.y;
+	Vector v=direction()*targetLength;
+	x=v.x;
+	y=v.y;
 	return *this;
+}
+
+float Vector::length() const
+{
+	return sqrt(x*x+y*y);
+}
+
+Vector Vector::direction() const
+{
+	return *this/length();
 }

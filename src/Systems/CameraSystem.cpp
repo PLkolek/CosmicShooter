@@ -41,7 +41,7 @@ void CameraSystem::update(sf::Time deltaTime)
 				components.at(Level::CompKey(*it, "CameraSource")));
 		ViewportComponent* vC = boost::polymorphic_downcast<ViewportComponent*>(
 				components.at(Level::CompKey(*it, "Viewport")));
-		view.setCenter(pC->x + csC->offsetX, pC->y + csC->offsetY);
+		view.setCenter(pC->pos.x + csC->offsetX, pC->pos.y + csC->offsetY);
 		view.setSize(csC->sourceWidth, csC->sourceHeight);
 		window.setView(view);
 	}
