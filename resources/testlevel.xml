@@ -1,0 +1,406 @@
+<Object name="PlayerScore">
+</Object>
+
+<Object name="Player">
+	<Position x="0" y="139" z="0" />
+</Object>
+
+<Object name="Background">
+</Object>
+
+<Object name="Lava">
+	<Position x="-400" y="230" z="0" />
+</Object>
+
+<Object name="Lava">
+	<Position x="-400" y="330" z="0" />
+</Object>
+
+<Object name="Lava">
+	<Position x="600" y="230" z="0" />
+</Object>
+
+<Object name="Lava">
+	<Position x="600" y="330" z="0" />
+</Object>
+
+<Object name="GroundFat">
+	<Position x="0" y="200" z="0" />
+</Object>
+
+<Object name="LavaEmiter">
+	<Position x="159" y="230" z="0" />
+</Object>
+
+
+<Object name="GroundFat">
+	<Position x="200" y="200" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="264" y="150" z="0" />
+</Object>
+
+
+<Object name="LavaEmiter">
+	<Position x="359" y="230" z="0" />
+</Object>
+
+<Object name="GroundFat">
+	<Position x="400" y="200" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="464" y="150" z="0" />
+</Object>
+
+<Object name="LavaEmiter">
+	<Position x="559" y="230" z="0" />
+</Object>
+
+<Object name="GroundFat">
+	<Position x="600" y="200" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="664" y="150" z="0" />
+</Object>
+
+<Object name="LavaEmiter">
+	<Position x="759" y="230" z="0" />
+</Object>
+
+<Object name="StoneRemover">
+	<Position x="728" y="200" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="800" y="180" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="900" y="146" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="1000" y="112" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="1100" y="78" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="1200" y="44" z="0" />
+</Object>
+
+<Object name="StoneEmiter">
+	<Position x="1370" y="-16" z="0" />
+</Object>
+
+<Object name="Armata">
+	<Position x="1370" y="-16" z="0" />
+</Object>
+
+<Object name="StoneRemover">
+	<Position x="1370" y="-46" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="1300" y="10" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="1400" y="-24" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="1500" y="-58" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="1600" y="-92" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="1700" y="-126" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="1800" y="-160" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="1900" y="-194" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="2000" y="-228" z="0" />
+</Object>
+
+<Object name="StoneEmiter">
+	<Position x="1970" y="-220" z="0" />
+</Object>
+
+<Object name="Armata">
+	<Position x="1970" y="-220" z="0" />
+</Object>
+
+<Object name="GroundSmall2">
+	<Position x="2100" y="-262" z="0" />
+</Object>
+
+<Object name="Laser">
+	<Position x="2100" y="-310" z="0" />
+</Object>
+
+<Object name="Laser">
+	<Position x="3100" y="-310" z="0" />
+</Object>
+
+<Object name="Laser">
+	<Position x="4100" y="-310" z="0" />
+</Object>
+
+<Object name="GroundVert">
+	<Position x="2136" y="-262" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="2136" y="-183" z="0" />
+</Object>
+
+<Object name="GroundVert">
+	<Position x="2230" y="-262" z="0" />
+</Object>
+
+<Object name="GroundSmall2">
+	<Position x="2268" y="-262" z="0" />
+</Object>
+
+<Object name="GroundVert">
+	<Position x="2304" y="-262" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="2304" y="-183" z="0" />
+</Object>
+
+<Object name="GroundVert">
+	<Position x="2398" y="-262" z="0" />
+</Object>
+
+<Object name="GroundSmall2">
+	<Position x="2436" y="-262" z="0" />
+</Object>
+
+<Object name="GroundVert">
+	<Position x="2472" y="-262" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="2472" y="-183" z="0" />
+</Object>
+
+<Object name="GroundVert">
+	<Position x="2566" y="-262" z="0" />
+</Object>
+
+<Object name="GroundSmall2">
+	<Position x="2604" y="-262" z="0" />
+</Object>
+
+<Object name="GroundVert">
+	<Position x="2640" y="-262" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="2640" y="-183" z="0" />
+</Object>
+
+<Object name="GroundVert">
+	<Position x="2734" y="-262" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="2772" y="-262" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="2904" y="-262" z="0" />
+</Object>
+
+<Object name="GroundSmall2">
+	<Position x="2764" y="-360" z="0" />
+</Object>
+
+<Object name="GroundSmall2">
+	<Position x="2888" y="-360" z="0" />
+</Object>
+
+<Object name="GroundSmall2">
+	<Position x="3012" y="-360" z="0" />
+</Object>
+
+<Object name="GroundSmall2">
+	<Position x="3136" y="-360" z="0" />
+</Object>
+
+
+<!--- pierwszy small, gejzer i złoto -->
+
+<Object name="GroundSmall2">
+	<Position x="3260" y="-360" z="0" />
+</Object>
+
+<Object name="Geyser">
+	<Position x="3274" y="-376" z="0" />
+</Object>
+
+<Object name="GasEmiter">
+	<Position x="3269" y="-402" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3230" y="-345" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3235" y="-375" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3250" y="-405" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3278" y="-425" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3306" y="-405" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3321" y="-375" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3326" y="-345" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="3036" y="-262" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="3168" y="-262" z="0" />
+</Object>
+
+<!--- drugi small, gejzer i złoto -->
+
+<Object name="GroundSmall2">
+	<Position x="3524" y="-360" z="0" />
+</Object>
+
+<Object name="Geyser">
+	<Position x="3538" y="-376" z="0" />
+</Object>
+
+<Object name="GasEmiter">
+	<Position x="3533" y="-402" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3494" y="-345" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3499" y="-375" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3514" y="-405" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3542" y="-425" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3570" y="-405" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3585" y="-375" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3590" y="-345" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="3300" y="-262" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="3432" y="-262" z="0" />
+</Object>
+
+<!--- trzeci small, gejzer i złoto -->
+
+<Object name="GroundSmall2">
+	<Position x="3788" y="-360" z="0" />
+</Object>
+
+<Object name="Geyser">
+	<Position x="3802" y="-376" z="0" />
+</Object>
+
+<Object name="GasEmiter">
+	<Position x="3797" y="-402" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3758" y="-345" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3763" y="-375" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3778" y="-405" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3806" y="-425" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3834" y="-405" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3849" y="-375" z="0" />
+</Object>
+
+<Object name="Coin">
+	<Position x="3854" y="-345" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="3564" y="-262" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="3696" y="-262" z="0" />
+</Object>
+
+<Object name="GroundMid">
+	<Position x="3828" y="-262" z="0" />
+</Object>
+
+
+
+<Object name="LevelMusic" />
