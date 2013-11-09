@@ -6,23 +6,25 @@
  */
 
 #include "PositionComponent.hpp"
+#include "General/ComponentsEnum.hpp"
+#include "Exceptions/RequiredAttributeNotFound.hpp"
 
 #include <boost/lexical_cast.hpp>
 
 PositionComponent::PositionComponent(int EID) :
-		Component(EID), pos(), angle(0)
+		Component(EID), pos(),dim(), angle(0)
 {
 
 }
 
-PositionComponent::PositionComponent(Vector p, double angle, int EID) :
-		Component(EID), pos(p), angle(angle)
+PositionComponent::PositionComponent(Vector p, Vector dim, double angle, int EID) :
+		Component(EID), pos(p), dim(dim), angle(angle)
 {
 
 }
 
 PositionComponent::PositionComponent(const PositionComponent& orig) :
-		Component(orig.EID), pos(orig.pos), angle(orig.angle)
+		Component(orig.EID), pos(orig.pos), dim(orig.dim), angle(orig.angle)
 {
 }
 
@@ -39,11 +41,17 @@ PositionComponent::PositionComponent(rapidxml::xml_node<>* componentNode) :
 void PositionComponent::read(rapidxml::xml_node<>* componentNode)
 {
 	if (componentNode->first_attribute("x") != 0)
-		pos.x = boost::lexical_cast<double>(componentNode->first_attribute("x")->value());
+		pos.x = boost::lexical_cast<float>(componentNode->first_attribute("x")->value());
 	if (componentNode->first_attribute("y") != 0)
-		pos.y = boost::lexical_cast<double>(componentNode->first_attribute("y")->value());
+		pos.y = boost::lexical_cast<float>(componentNode->first_attribute("y")->value());
+	if (componentNode->first_attribute("w") != 0)
+		dim.x = boost::lexical_cast<float>(componentNode->first_attribute("w")->value());
+	if (componentNode->first_attribute("h") != 0)
+		dim.y = boost::lexical_cast<float>(componentNode->first_attribute("h")->value());
+
 	if (componentNode->first_attribute("angle") != 0)
-		angle = boost::lexical_cast<double>(componentNode->first_attribute("angle")->value());
+		angle = boost::lexical_cast<float>(componentNode->first_attribute("angle")->value());
+
 }
 
 Component* PositionComponent::clone(int newEID)

@@ -50,7 +50,7 @@ void ViewportComponent::read(rapidxml::xml_node<>* componentNode)
 					== "max")
 	{
 		//FIXME: Window size=max!!!
-		destination.height = 800;
+		destination.height = 600;
 	}
 	else
 		destination.height = destination.left = boost::lexical_cast<int>(

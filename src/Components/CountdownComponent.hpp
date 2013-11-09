@@ -12,25 +12,26 @@
 
 #include "Component.hpp"
 
-struct Action
-{
-	double time;
-	std::string name;
-	std::string target;
-	double targetTime;
-};
-
-class CompareByTime
-{
-public:
-	bool operator()(const Action& lhs, const Action& rhs) const
-	{
-		return (lhs.time > rhs.time);
-	}
-};
-
 struct CountdownComponent: public Component
 {
+	struct Action
+	{
+		double time;
+		std::string name;
+		std::string target;
+		double targetTime;
+	};
+
+	class CompareByTime
+	{
+	public:
+		bool operator()(const CountdownComponent::Action& lhs, const CountdownComponent::Action& rhs) const
+		{
+			return (lhs.time > rhs.time);
+		}
+	};
+
+
 	CountdownComponent(int EID);
 	CountdownComponent(int EID, double startTime);
 	CountdownComponent(CountdownComponent& orig);
@@ -47,6 +48,8 @@ struct CountdownComponent: public Component
 	std::multiset<Action, CompareByTime> actions;
 	std::multiset<Action, CompareByTime>::iterator actIt;
 };
+
+
 
 #endif	/* COUNTDOWNCOMPONENT_HPP */
 

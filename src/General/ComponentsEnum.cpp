@@ -31,62 +31,34 @@
 #include "Exceptions/NoSuchComponentName.hpp"
 
 int ComponentsEnum::nextId = 0;
-ComponentsEnum::NameEnumMap ComponentsEnum::nameToEnum;
-ComponentsEnum::EnumsVector ComponentsEnum::enums = ComponentsEnum::initEnums();
 
-ComponentsEnum::ConstEnumsVector ComponentsEnum::getValues()
-{
-	return enums;
-}
-
-std::string ComponentsEnum::getName()
-{
-	return name;
-}
-
-ComponentsEnum::EnumsVector ComponentsEnum::initEnums()
-{
-	ComponentsEnum::EnumsVector result;
-	result.emplace_back(std::unique_ptr<ComponentsEnum>(new ComponentsEnum::BoundingBox()));
-	result.emplace_back(std::unique_ptr<ComponentsEnum>(new ComponentsEnum::CameraSource()));
-	result.emplace_back(std::unique_ptr<ComponentsEnum>(new ComponentsEnum::Countdown()));
-	result.emplace_back(std::unique_ptr<ComponentsEnum>(new ComponentsEnum::Damage()));
-	result.emplace_back(std::unique_ptr<ComponentsEnum>(new ComponentsEnum::HasScore()));
-	result.emplace_back(std::unique_ptr<ComponentsEnum>(new ComponentsEnum::Music()));
-	result.emplace_back(std::unique_ptr<ComponentsEnum>(new ComponentsEnum::Particle()));
-	result.emplace_back(std::unique_ptr<ComponentsEnum>(new ComponentsEnum::Physics()));
-	result.emplace_back(std::unique_ptr<ComponentsEnum>(new ComponentsEnum::Position()));
-	result.emplace_back(std::unique_ptr<ComponentsEnum>(new ComponentsEnum::PositionRelativeTo()));
-	result.emplace_back(std::unique_ptr<ComponentsEnum>(new ComponentsEnum::Remove()));
-	result.emplace_back(std::unique_ptr<ComponentsEnum>(new ComponentsEnum::Score()));
-	result.emplace_back(std::unique_ptr<ComponentsEnum>(new ComponentsEnum::Sprite()));
-	result.emplace_back(std::unique_ptr<ComponentsEnum>(new ComponentsEnum::Standable()));
-	result.emplace_back(std::unique_ptr<ComponentsEnum>(new ComponentsEnum::StandsOn()));
-	result.emplace_back(std::unique_ptr<ComponentsEnum>(new ComponentsEnum::Text()));
-	result.emplace_back(std::unique_ptr<ComponentsEnum>(new ComponentsEnum::Viewport()));
-	return result;
-}
+ComponentsEnum::BoundingBox ComponentsEnum::BOUNDINGBOX=ComponentsEnum::BoundingBox();
+ComponentsEnum::CameraSource ComponentsEnum::CAMERASOURCE=ComponentsEnum::CameraSource();
+ComponentsEnum::Countdown ComponentsEnum::COUNTDOWN=ComponentsEnum::Countdown();
+ComponentsEnum::Damage ComponentsEnum::DAMAGE=ComponentsEnum::Damage();
+ComponentsEnum::HasScore ComponentsEnum::HASSCORE=ComponentsEnum::HasScore();
+ComponentsEnum::Music ComponentsEnum::MUSIC=ComponentsEnum::Music();
+ComponentsEnum::Particle ComponentsEnum::PARTICLE=ComponentsEnum::Particle();
+ComponentsEnum::Physics ComponentsEnum::PHYSICS=ComponentsEnum::Physics();
+ComponentsEnum::Position ComponentsEnum::POSITION=ComponentsEnum::Position();
+ComponentsEnum::PositionRelativeTo ComponentsEnum::POSITIONRELATIVETO=ComponentsEnum::PositionRelativeTo();
+ComponentsEnum::Remove ComponentsEnum::REMOVE=ComponentsEnum::Remove();
+ComponentsEnum::Score ComponentsEnum::SCORE=ComponentsEnum::Score();
+ComponentsEnum::Sprite ComponentsEnum::SPRITE=ComponentsEnum::Sprite();
+ComponentsEnum::Standable ComponentsEnum::STANDABLE=ComponentsEnum::Standable();
+ComponentsEnum::StandsOn ComponentsEnum::STANDSON=ComponentsEnum::StandsOn();
+ComponentsEnum::Text ComponentsEnum::TEXT=ComponentsEnum::Text();
+ComponentsEnum::Viewport ComponentsEnum::VIEWPORT=ComponentsEnum::Viewport();
 
 ComponentsEnum::~ComponentsEnum()
 {
 	// TODO Auto-generated destructor stub
 }
 
-ComponentsEnum& ComponentsEnum::getByName(std::string name)
-{
-	NameEnumMap::iterator it = nameToEnum.find(boost::to_upper_copy(name));
-	if (it != nameToEnum.end())
-		return nameToEnum.at(boost::to_upper_copy(name));
-	throw NoSuchComponentName(name);
-}
-
 //transforms name to uppercase and stores in map
 ComponentsEnum::ComponentsEnum(std::string name)
+:Enum(name)
 {
-	nameToEnum.insert(
-			std::pair<std::string, ComponentsEnum&>(boost::to_upper_copy(name),
-					*this));
-	id = nextId++;
 }
 
 Component* ComponentsEnum::BoundingBox::createComponent(

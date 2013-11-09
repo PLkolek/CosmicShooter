@@ -11,6 +11,7 @@
 #include "General/Archetype.h"
 #include "Components/Component.hpp"
 #include "General/ComponentsEnum.hpp"
+#include "Utility/Enum.h"
 
 Archetype::Archetype(rapidxml::xml_node<>* archetypeNode)
 {
@@ -35,7 +36,7 @@ void Archetype::read(rapidxml::xml_node<>* archetypeNode)
 			std::cerr << componentNode->name() << "\n";
 			components.push_back(
 					std::pair<std::string, Component*>(componentNode->name(),
-							ComponentsEnum::getByName(componentNode->name()).createComponent(componentNode)));
+							Enum<ComponentsEnum>::getByName(componentNode->name()).createComponent(componentNode)));
 		}
 	}
 	if (archetypeNode->first_node("Systems") != 0)

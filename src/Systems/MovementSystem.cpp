@@ -69,6 +69,28 @@ void MovementSystem::update(sf::Time time)
 
 		posC.angle += deltaT * physC.angularV;
 		posC.angle -= (360.0 * int(posC.angle / 360.0));
+		if(posC.pos.x+posC.dim.x>800)
+		{
+			posC.pos.x=800-posC.dim.x-(posC.pos.x+posC.dim.x-800);
+			physC.v.x*=-1.f;
+		}
+		else if(posC.pos.x<0)
+		{
+			posC.pos.x=-posC.pos.x;
+			physC.v.x*=-1.f;
+		}
+
+		if(posC.pos.y+posC.dim.y>600)
+		{
+			posC.pos.y=600-posC.dim.y-(posC.pos.y+posC.dim.y-600);
+			physC.v.y*=-1.f;
+		}
+		else if(posC.pos.y<0)
+		{
+			posC.pos.y=-posC.pos.y;
+			physC.v.y*=-1.f;
+		}
+
 
 		physC.prevA=physC.a;
 		physC.prevF=physC.f;

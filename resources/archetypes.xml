@@ -1,10 +1,9 @@
 <Archetype name="Player">
 	<Components>
-		<Position x="0" y="0"/>
+		<Position x="0" y="0" w="38" h="61"/>
 		<Sprite file="player2.png" frameWidth="38" loopTime="0.5" layer="2"/>
 		<Physics m="100" acceleration="600" stoppingSpeed="1000" maxSpeed="200"/>
 		<BoundingBox x="0" y="0" w="38" h="61" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1" collisionGroup="1"/>
-		<StandsOn jumpingPower="300" jumpingTime="0.3"/>
 		<HasScore scoreEID="1" />
 		<Countdown time="3">
 			<AddToSystem target="PlayerInput" time="0"/>
@@ -18,7 +17,6 @@
 		<Collision />
 		<Movement />
 		<Countdown />
-		<StandsOn />
 		<Score />
 		<RemoveOnContact />
 	</Systems>
@@ -64,16 +62,22 @@
 		<DataToText />
 	</Systems>
 </Archetype>
-
-<Archetype name="PlayerScore">
-	<Components>
-		<Position x="10" y="10"/>
-		<Score score="100000" toText="1"/>
-		<Text font="DejaVuSans.ttf"/>
-	</Components>
-	<Systems>
-		<DataToText />
-		<TextRender />
-	</Systems>
-</Archetype>
-
+<!--
+<Archetype name="StupidEnemy">
+    <Components>
+        <Position x="random" y="random" w="38" h="61"/>
+        <Sprite file="player2.png" frameWidth="38" loopTime="0.5" layer="2"/>
+        <Physics m="100" acceleration="600" stoppingSpeed="1000" maxSpeed="200"/>
+        <BoundingBox x="0" y="0" w="38" h="61" topSolid="1" rightSolid="1" bottomSolid="1" leftSolid="1" collisionGroup="1"/>
+        <Remove removeGroup="1" target="0"/>
+    </Components>
+    <Systems>
+        <Render />
+        <Collision />
+        <Movement />
+        <Countdown />
+        <StandsOn />
+        <Score />
+        <RemoveOnContact />
+    </Systems>
+</Archetype> -->

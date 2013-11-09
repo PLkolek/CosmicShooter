@@ -9,7 +9,7 @@
 #define	PHYSICSCOMPONENT_HPP
 
 #include "Components/Component.hpp"
-#include "Other/Vector.h"
+#include "Utility/Vector.h"
 #include "rapidxml/rapidxml.hpp"
 
 struct PhysicsComponent: public Component

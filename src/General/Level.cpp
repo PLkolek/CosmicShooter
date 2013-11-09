@@ -170,10 +170,10 @@ void Level::update(sf::Time deltaTime)
 	int counter = 0;
 	for (int EID : entitiesToRemove)
 	{
-		for (const std::unique_ptr<ComponentsEnum>& component : ComponentsEnum::getValues())
+		for (const Enum<ComponentsEnum> component : ComponentsEnum::getValues())
 		{
 			counter++;
-			components.erase(CompKey(EID, component->getName()));
+			components.erase(CompKey(EID, component.getName()));
 		}
 		t1 += preciseTimer.restart().asMicroseconds();
 

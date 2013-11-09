@@ -9,14 +9,14 @@
 #define	POSITIONCOMPONENT_HPP
 
 #include "Components/Component.hpp"
-#include "Other/Vector.h"
+#include "Utility/Vector.h"
 #include "rapidxml/rapidxml.hpp"
 
 class PositionComponent: public Component
 {
 public:
 	PositionComponent(int EID);
-	PositionComponent(Vector p, double angle, int EID);
+	PositionComponent(Vector p, Vector dim, double angle, int EID);
 	PositionComponent(const PositionComponent& orig);
 	PositionComponent(rapidxml::xml_node<>* componentNode);
 	virtual ~PositionComponent();
@@ -25,6 +25,7 @@ public:
 	void read(rapidxml::xml_node<>* componentNode);
 
 	Vector pos;
+	Vector dim;
 	double angle; //orientation
 };
 

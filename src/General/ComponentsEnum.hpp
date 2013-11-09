@@ -12,22 +12,19 @@
 #include <string>
 #include <vector>
 #include <list>
-#include <memory>
-
+#include <functional>
 #include "rapidxml/rapidxml.hpp"
+
+#include "Utility/Enum.h"
 
 class Component;
 
-class ComponentsEnum
+class ComponentsEnum: public Enum<ComponentsEnum>
 {
 public:
-	typedef const std::vector<std::unique_ptr<ComponentsEnum>>&  ConstEnumsVector;
 	static int nextId;
-	static ConstEnumsVector getValues();
-	static ComponentsEnum& getByName(std::string name);
 
 	virtual Component* createComponent(rapidxml::xml_node<>* archetypeNode)=0;
-	virtual std::string getName();
 	virtual ~ComponentsEnum();
 
 	class BoundingBox;
@@ -47,15 +44,27 @@ public:
 	class StandsOn;
 	class Text;
 	class Viewport;
+
+	static BoundingBox BOUNDINGBOX;
+	static CameraSource CAMERASOURCE;
+	static Countdown COUNTDOWN;
+	static Damage DAMAGE;
+	static HasScore HASSCORE;
+	static Music MUSIC;
+	static Particle PARTICLE;
+	static Physics PHYSICS;
+	static Position POSITION;
+	static PositionRelativeTo POSITIONRELATIVETO;
+	static Remove REMOVE;
+	static Score SCORE;
+	static Sprite SPRITE;
+	static Standable STANDABLE;
+	static StandsOn STANDSON;
+	static Text TEXT;
+	static Viewport VIEWPORT;
+
 private:
 	ComponentsEnum(std::string name);
-	typedef std::vector<std::unique_ptr<ComponentsEnum>>  EnumsVector;
-	typedef std::map<std::string, ComponentsEnum&>  NameEnumMap;
-	static NameEnumMap nameToEnum;
-	static EnumsVector enums;
-	std::string name;
-	int id;
-	static EnumsVector initEnums();
 };
 
 class ComponentsEnum::BoundingBox: public ComponentsEnum
